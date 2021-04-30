@@ -4,6 +4,8 @@ if (!isset($_SESSION['submarino']['id'])) exit;
 $tabela = "clientes";
 
 $nome = $email = $cep = $logradouro = $numero = $complemento = $bairro = $cidade_id = $cpf = $dataNascimento = $celular = $cidade = $estado = NULL;
+$senha = "require data-parsley-required-message='Digite uma senha'";
+
 
 if (!empty($id)) {
 
@@ -20,6 +22,7 @@ if (!empty($id)) {
 	//recuperar os dados
 	$dados = $consulta->fetch(PDO::FETCH_OBJ);
 	//separar os dados
+	$id  = $dados->id;
 	$nome  = $dados->nome;
 	$email = $dados->email;
 	$cep   = $dados->cep;
@@ -65,11 +68,11 @@ if (!empty($id)) {
 				</div>
 				<div class="col-12 col-md-6">
 					<label for="senha">Senha:</label>
-					<input type="password" name="senha" id="senha" class="form-control" required data-parsley-required-message="Preencha a senha">
+					<input type="password" name="senha" id="senha" class="form-control" <?= $senha ?>>
 				</div>
 				<div class="col-12 col-md-6">
 					<label for="redigite">Redigite a senha:</label>
-					<input type="password" name="redigite" id="redigite" class="form-control" required data-parsley-required-message="Redigite a senha" data-parsley-equalto="#senha" data-parsley-equalto-message="As senhas devem ser iguais">
+					<input type="password" name="redigite" id="redigite" class="form-control" data-parsley-equalto="#senha" data-parsley-equalto-message="As senhas devem ser iguais">
 				</div>
 				<div class="col-12 col-md-4">
 					<label for="cpf">CPF:</label>

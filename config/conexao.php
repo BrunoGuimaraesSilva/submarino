@@ -1,12 +1,12 @@
 <?php
 	
-	$servidor = "172.18.0.1";
+	$servidor = "database.cxjpuvck2yfu.sa-east-1.rds.amazonaws.com";
 	//usuario de conexao com o banco
-	$usuario  = "root";
+	$usuario  = "admin";
 	//senha de conexao com o banco
 	$senha    = "password";
 	//nome do banco de dados
-	$banco    = "app_development";
+	$banco    = "alfa_burnes";
 	$porta    = "3306";
 
 	//$con - conexao(servidor, usuario, senha, banco)

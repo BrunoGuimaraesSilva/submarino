@@ -2,9 +2,9 @@
 
 	//criar uma conexao com um banco - PDO
 	//constante
-	define('SERVER','172.18.0.2');
-	define('BANCO', 'app_development');
-	define('USUARIO', 'root');
+	define('SERVER','database.cxjpuvck2yfu.sa-east-1.rds.amazonaws.com');
+	define('BANCO', 'alfa_burnes');
+	define('USUARIO', 'admin');
 	define('SENHA', 'password');
 	define('PORTA', '3306');
 
