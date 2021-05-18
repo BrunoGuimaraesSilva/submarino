@@ -11,8 +11,6 @@
 	try {
 		//tentar realizar a conexão
 		$pdo = new PDO("mysql:host=".SERVER.";dbname=".BANCO.";charset=utf8;",USUARIO,SENHA,);
-		//echo '<p>Conectou</p>';
-
 
 	} catch (PDOException $erro) {
 		echo '<p>Erro ao tentar conectar no banco de dados:</p>';

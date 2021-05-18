@@ -1,5 +1,6 @@
 <?php
 	
+	//servidor do banco de dados
 	$servidor = "database.cxjpuvck2yfu.sa-east-1.rds.amazonaws.com";
 	//usuario de conexao com o banco
 	$usuario  = "admin";
