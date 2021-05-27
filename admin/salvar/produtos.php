@@ -21,7 +21,7 @@
 
     	echo "<p>O valor de chimbinha é $chimbinha</p>";*/
 
-    	include "libs/docs.php";
+
         include "libs/imagem.php";
 
     	foreach ($_POST as $key => $value) {

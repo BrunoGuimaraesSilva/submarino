@@ -3,7 +3,6 @@
 
     $produto = $descricao = $valor = $promo = $imagem = $ativo = $categoria_id = NULL;
 
-    include "libs/docs.php";
 
     //select para edição
     if ( ! empty ( $id ) ) {

@@ -73,6 +73,9 @@
         //mostrar a tela de login
         include "paginas/login.php";
     } else {
+        
+        //incluir o arquivo de conexao com o banco
+        include "libs/conectar.php";
 
         //incluir o header
         include "header.php";
@@ -96,8 +99,6 @@
 
         }
 
-        //incluir o arquivo de conexao com o banco
-        include "libs/conectar.php";
 
         //verificar o arquivo (tabela)
         if ( !empty ( $arquivo ) ) {
@@ -134,8 +135,27 @@
         echo "<pre>";
         print_r ( $_SERVER );*/
 
+        
+        //verificar o acesso aquele arquivo
+
+        //pegar o tipo de usuário
+        $tipo_id = $_SESSION["submarino"]["tipo_id"];
+
+        $sql = "select acesso from acesso where tabela = :arquivo AND 
+            tipo_id = :tipo_id limit 1";
+        $consulta = $pdo->prepare($sql);
+        $consulta->bindParam(":arquivo", $arquivo);
+        $consulta->bindParam(":tipo_id", $tipo_id);
+        $consulta->execute();
+        $dados = $consulta->fetch(PDO::FETCH_OBJ);
+
+        $acesso = $dados->acesso ?? "N";
+
+        //echo $acesso;
+
         //verificar se o arquivo existe
-        if ( file_exists( $pagina ) ) include $pagina;
+        if ( $acesso == "N") include "paginas/acesso.php";
+        else if ( file_exists( $pagina ) ) include $pagina;
         else include "paginas/erro.php";
 
         //incluir o footer

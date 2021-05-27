@@ -37,12 +37,25 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="cadastros/categorias"><i class="fas fa-tags"></i> Categorias</a>
-                        <a class="collapse-item" href="cadastros/produtos"><i class="fas fa-gift"></i> Produtos</a>
-                        <a class="collapse-item" href="cadastros/cidades"><i class="fas fa-map-marker"></i> Cidades</a>
-                        <a class="collapse-item" href="cadastros/clientes"><i class="fas fa-user-plus"></i> Clientes</a>
-                        <a class="collapse-item" href="cadastros/tipos"><i class="fas fa-user-tag"></i> Tipo de Usuários</a>
-                        <a class="collapse-item" href="cadastros/usuarios"><i class="fas fa-users"></i> Usuário</a>
+                        <?php
+                            include "libs/docs.php";
+
+                            $sql = "select * from menu where submenu = 'C' 
+                                order by nome";
+                            $consulta = $pdo->prepare($sql);
+                            $consulta->execute();
+
+                            while ( $dados = $consulta->fetch(PDO::FETCH_OBJ) ) {
+
+                                $acesso = acesso($pdo, $dados->tabela);
+                                if ( $acesso == "S" ) {
+                                ?>
+                                <a class="collapse-item" href="<?=$dados->url?>"><i class="<?=$dados->icone?>"></i> <?=$dados->nome?></a>
+                                <?php
+                                }
+
+                            }
+                        ?>
                     </div>
                 </div>
             </li>
@@ -57,7 +70,24 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="cadastros/vendas"><i class="fas fa-shopping-cart"></i> Vendas</a>
+                        <?php
+ 
+                            $sql = "select * from menu where submenu = 'P' 
+                                order by nome";
+                            $consulta = $pdo->prepare($sql);
+                            $consulta->execute();
+
+                            while ( $dados = $consulta->fetch(PDO::FETCH_OBJ) ) {
+
+                                $acesso = acesso($pdo, $dados->tabela);
+                                if ( $acesso == "S" ) {
+                                ?>
+                                <a class="collapse-item" href="<?=$dados->url?>"><i class="<?=$dados->icone?>"></i> <?=$dados->nome?></a>
+                                <?php
+                                }
+
+                            }
+                        ?>
                     </div>
                 </div>
             </li>
@@ -75,9 +105,24 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="relatorios/clientes"><i class="fas fa-user-plus"></i> Clientes</a>
-                        <a class="collapse-item" href="relatorios/vendas"><i class="fas fa-shopping-cart"></i> Vendas</a>
-                        <a class="collapse-item" href="relatorios/logs"><i class="fas fa-search"></i> Logs</a>
+                        <?php
+
+                            $sql = "select * from menu where submenu = 'R' 
+                                order by nome";
+                            $consulta = $pdo->prepare($sql);
+                            $consulta->execute();
+
+                            while ( $dados = $consulta->fetch(PDO::FETCH_OBJ) ) {
+
+                                $acesso = acesso($pdo, $dados->tabela);
+                                if ( $acesso == "S" ) {
+                                ?>
+                                <a class="collapse-item" href="<?=$dados->url?>"><i class="<?=$dados->icone?>"></i> <?=$dados->nome?></a>
+                                <?php
+                                }
+
+                            }
+                        ?>
                     </div>
                 </div>
             </li>
